@@ -43,7 +43,7 @@ Pour gagner du temps sur le code frontend, nous vous fournissons [un template](.
 * Vous êtes libres d'utiliser toutes technologies, outils, base de données ou librairies pour réaliser le challenge. La seule obligation est d'utiliser PHP (orienté objet) pour la plus grosse partie du code de votre application.
 * Vous devrez utiliser le [template fourni](./template) comme base de votre application web. Vous êtes libres de l'améliorer mais **l'objectif de ce challenge est principalement d'évaluer vos compétences backend**.
 * Les données de [GH Archive](https://www.gharchive.org/) devront être stockées dans une base de données par un script d'import avant d'être requêtées par l'application.
-* Vous écrirez votre code dans avec un objectif de qualité.
+* Vous écrirez votre code avec un objectif de qualité.
 
 ## Bonus :sparkles:
 
