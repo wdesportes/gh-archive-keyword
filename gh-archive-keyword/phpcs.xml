@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ruleset name="GHAK"
+    xmlns="http://pmd.sf.net/ruleset/1.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://pmd.sf.net/ruleset/1.0.0 http://pmd.sf.net/ruleset_xml_schema.xsd" xsi:noNamespaceSchemaLocation="http://pmd.sf.net/ruleset_xml_schema.xsd">
+
+    <file>.</file>
+    <exclude-pattern type="relative">public/index.php</exclude-pattern>
+    <exclude-pattern type="relative">vendor/*</exclude-pattern>
+    <exclude-pattern type="relative">bootstrap/*</exclude-pattern>
+    <exclude-pattern type="relative">build/*</exclude-pattern>
+    <exclude-pattern type="relative">storage/*</exclude-pattern>
+    <exclude-pattern type="relative">*.blade.php</exclude-pattern>
+    <rule ref="PSR12">
+    </rule>
+    <rule ref="PSR2">
+    </rule>
+
+</ruleset>
