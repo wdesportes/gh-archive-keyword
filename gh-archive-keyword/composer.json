@@ -1,10 +1,12 @@
 {
-    "name": "laravel/laravel",
+    "name": "williamdes/gh-archive-keyword",
     "type": "project",
-    "description": "The Laravel Framework.",
+    "description": "GitHub archive search by keyword API",
     "keywords": [
-        "framework",
-        "laravel"
+        "keyword",
+        "api",
+        "github",
+        "github-archive"
     ],
     "license": "MPL-2.0",
     "require": {
@@ -46,7 +48,7 @@
             "Tests\\": "tests/"
         }
     },
-    "minimum-stability": "dev",
+    "minimum-stability": "stable",
     "prefer-stable": true,
     "scripts": {
         "post-autoload-dump": [
