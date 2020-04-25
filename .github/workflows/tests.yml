@@ -1,0 +1,45 @@
+name: Run tests
+
+on: [push]
+
+jobs:
+    test-unit:
+        name: Run unit tests
+        runs-on: ubuntu-latest
+        services:
+            mysql:
+                image: mysql:5.7
+                env:
+                    MYSQL_DATABASE: api_db
+                    MYSQL_ROOT_PASSWORD: testbench
+                    MYSQL_USER: sys
+                    MYSQL_PASSWORD: password
+                options: --health-cmd="mysqladmin ping" --health-interval=10s --health-timeout=5s --health-retries=3
+        steps:
+            - name: Checkout repository
+              uses: actions/checkout@v2
+            - name: Use php 7.3
+              uses: shivammathur/setup-php@v2
+              with:
+                  php-version: 7.3
+                  extensions: fileinfo, dom, tokenizer, simplexml, curl
+                  coverage: none
+            - name: Cache module
+              uses: actions/cache@v1.1.2
+              with:
+                  path: ~/.composer/cache/
+                  key: composer-cache
+            - name: Install dependencies
+              run: |
+                  php -v && composer --version
+                  composer install --no-suggest --no-interaction --optimize-autoloader
+            - name: Run unit tests
+              env:
+                  DB_HOST: mysql
+                  DB_PORT: ${{ job.services.mysql.ports['3306'] }}
+                  DB_DATABASE: api_db
+                  DB_USERNAME: sys
+                  DB_PASSWORD: password
+                  APP_ENV: testing
+              run: |
+                  composer run phpunit

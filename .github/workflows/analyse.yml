@@ -1,0 +1,27 @@
+name: Analyse files
+
+on: [push]
+
+jobs:
+    analyse-php:
+        runs-on: ubuntu-latest
+        steps:
+            - name: Checkout repository
+              uses: actions/checkout@v2
+            - name: Use php 7.3
+              uses: shivammathur/setup-php@v2
+              with:
+                  php-version: 7.3
+                  extensions: fileinfo, dom, tokenizer, simplexml, curl
+                  coverage: none
+            - name: Cache module
+              uses: actions/cache@v1.1.2
+              with:
+                  path: ~/.composer/cache/
+                  key: composer-cache
+            - name: Install dependencies
+              run: |
+                  php -v && composer --version
+                  composer install --no-suggest --no-interaction --optimize-autoloader
+            - name: Analyse files
+              run: composer run phpstan
