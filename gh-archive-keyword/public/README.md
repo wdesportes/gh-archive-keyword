@@ -14,7 +14,7 @@ Vous pouvez passer plus de temps pour le compléter de manière facultative. Il 
 
 Vous devrez rendre le livrable au maximum **dans un délai de 7 jours**.
 
-## Évaluation :trophy: 
+## Évaluation :trophy:
 
 Le code sera évalué sur les critères suivants *(laissés à votre libre interprétation)* :
 
