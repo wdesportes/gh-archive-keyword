@@ -65,10 +65,12 @@
             "@php artisan key:generate --ansi"
         ],
         "test": [
+            "@phplint",
             "@phpunit",
             "@phpstan",
             "@phpcs"
         ],
+        "phplint": "find . ! -path './vendor/*' ! -type f -name '*.php' -print0 | xargs -0 -n1 php -l",
         "phpunit": "vendor/bin/phpunit",
         "phpstan": "vendor/bin/phpstan analyse --memory-limit=2G",
         "phpcs": "phpcs -s -p",
