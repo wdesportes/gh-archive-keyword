@@ -165,6 +165,7 @@ return [
         /*
          * Package Service Providers...
          */
+        TwigBridge\ServiceProvider::class,
 
         /*
          * Application Service Providers...
