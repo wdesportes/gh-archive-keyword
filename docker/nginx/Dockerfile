@@ -3,7 +3,8 @@ FROM php:7.4-alpine
 RUN apk add --no-cache --update $PHPIZE_DEPS nginx composer bash php7-fpm php7-mysqli php7-pdo_mysql php7-tokenizer php7-session && \
     mkdir -p /run/nginx && \
     pecl install -f redis && \
-    docker-php-ext-install pdo pdo_mysql
+    echo 'extension=redis.so' > /usr/local/etc/php/conf.d/redis.ini && \
+    docker-php-ext-install pdo_mysql
 
 WORKDIR /var/www/html
 
