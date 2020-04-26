@@ -21,17 +21,17 @@ docker-compose -p gha-keyword up --build
 **wait to see that the first composer install is done**
 
 ```bash
-docker exec php-7.4-nginx php artisan key:generate
+docker-compose -p gha-keyword exec php-7.4-nginx php artisan key:generate
 ```
 
 ### Migrate the database
 
 ```bash
-docker exec php-7.4-nginx php artisan migrate
+docker-compose -p gha-keyword exec php-7.4-nginx php artisan migrate
 ```
 
 ### Run the tests
 
 ```bash
-docker exec php-7.4-nginx composer run test
+docker-compose -p gha-keyword exec php-7.4-nginx composer run test
 ```
