@@ -11,8 +11,12 @@ final class PipeChoose
      * Choose to drop or pass the data to the next pipe
      * @return int The event Id
      */
-    public function handle(stdClass $data, Closure $next): int
+    public function handle(?stdClass $data, Closure $next): int
     {
+        if ($data === null) {
+            return -1;
+        }
+
         $goodEvents = [
             'PushEvent',
             'IssueCommentEvent',
