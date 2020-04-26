@@ -25,5 +25,4 @@ final class Commit extends Model
         'sha',
         'message',
     ];
-
 }

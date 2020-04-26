@@ -23,5 +23,4 @@ final class PullRequest extends Model
         'pull_id',
         'repository_id',
     ];
-
 }

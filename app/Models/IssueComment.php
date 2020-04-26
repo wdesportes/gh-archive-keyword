@@ -24,5 +24,4 @@ final class IssueComment extends Model
         'repository_id',
         'body',
     ];
-
 }

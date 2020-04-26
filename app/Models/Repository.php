@@ -23,5 +23,4 @@ final class Repository extends Model
         'id',
         'slug',
     ];
-
 }
