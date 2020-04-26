@@ -31,7 +31,7 @@
         <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
 
           <!-- Topbar Search -->
-          <form class="form-inline navbar-search">
+          <form class="form-inline navbar-search w-100">
             <input class="form-control mr-2" type="date" value="2018-02-14">
 
             <div class="input-group">
@@ -72,7 +72,7 @@
                   <div class="row no-gutters align-items-center">
                     <div class="col mr-2">
                       <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Nombre de commits</div>
-                      <div class="h5 mb-0 font-weight-bold text-gray-800">951</div>
+                      <div class="h5 mb-0 font-weight-bold text-gray-800">{{ commitCount }}</div>
                     </div>
                     <div class="col-auto">
                       <i class="fab fa-github-alt fa-2x text-gray-300"></i>
@@ -88,7 +88,7 @@
                   <div class="row no-gutters align-items-center">
                     <div class="col mr-2">
                       <div class="text-xs font-weight-bold text-success text-uppercase mb-1">Nombre de pull-request</div>
-                      <div class="h5 mb-0 font-weight-bold text-gray-800">42</div>
+                      <div class="h5 mb-0 font-weight-bold text-gray-800">{{ pullsCount }}</div>
                     </div>
                     <div class="col-auto">
                       <i class="fas fa-code-branch fa-2x text-gray-300"></i>
@@ -98,14 +98,13 @@
               </div>
             </div>
 
-            <!-- Pending Requests Card Example -->
             <div class="col-md-4 mb-4">
               <div class="card border-left-warning shadow h-100 py-2">
                 <div class="card-body">
                   <div class="row no-gutters align-items-center">
                     <div class="col mr-2">
                       <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">Nombre de commentaires</div>
-                      <div class="h5 mb-0 font-weight-bold text-gray-800">344</div>
+                      <div class="h5 mb-0 font-weight-bold text-gray-800">{{ commentCount }}</div>
                     </div>
                     <div class="col-auto">
                       <i class="fas fa-comments fa-2x text-gray-300"></i>

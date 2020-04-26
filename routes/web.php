@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ApiDataController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\View;
@@ -21,7 +22,4 @@ Route::get('/', function () {
     ]);
 });
 
-Route::get('/search', function () {
-    return View::make('index', [
-    ]);
-});
+Route::get('/search', [ApiDataController::class, 'getSearchIndex']);
