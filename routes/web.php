@@ -20,3 +20,8 @@ Route::get('/', function () {
         'locale' => str_replace('_', '-', App::getLocale())
     ]);
 });
+
+Route::get('/search', function () {
+    return View::make('index', [
+    ]);
+});
