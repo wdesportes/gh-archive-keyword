@@ -40,6 +40,15 @@ services:
             gha:
                 aliases:
                     - 7.4.gha.local
+    redis:
+        hostname: redis
+        image: 'redis:latest'
+        environment:
+            - ALLOW_EMPTY_PASSWORD=yes
+        networks:
+            gha:
+                aliases:
+                    - redis.gha.local
 
 volumes:
     db_data:
