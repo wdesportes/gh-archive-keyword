@@ -23,3 +23,9 @@ docker-compose -p gha-keyword up --build
 ```bash
 docker exec php-7.4-nginx php artisan key:generate
 ```
+
+### Run the tests
+
+```bash
+docker exec php-7.4-nginx composer run test
+```
