@@ -24,7 +24,8 @@ services:
             - MYSQL_PASSWORD=${DB_PASSWORD:-public}
 
     php-7.4-nginx:
-        build: ./docker/nginx
+        #build: ./docker/nginx
+        image: williamdes/docker-php-74-nginx
         dns_search: gha.local
         hostname: 7.4.gha.local
         domainname: gha.local
