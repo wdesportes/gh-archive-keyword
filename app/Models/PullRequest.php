@@ -22,5 +22,7 @@ final class PullRequest extends Model
     protected $fillable = [
         'pull_id',
         'repository_id',
+        'title',
+        'body',
     ];
 }
