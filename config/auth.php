@@ -15,7 +15,6 @@ return [
 
     'defaults' => [
         'guard' => 'web',
-        'passwords' => 'users',
     ],
 
     /*
@@ -37,14 +36,11 @@ return [
 
     'guards' => [
         'web' => [
-            'driver' => 'session',
-            'provider' => 'users',
+            'driver' => 'no-database',
         ],
 
         'api' => [
-            'driver' => 'token',
-            'provider' => 'users',
-            'hash' => false,
+            'driver' => 'no-database',
         ],
     ],
 
@@ -66,14 +62,6 @@ return [
     */
 
     'providers' => [
-        'users' => [
-            'driver' => 'eloquent',
-        ],
-
-        // 'users' => [
-        //     'driver' => 'database',
-        //     'table' => 'users',
-        // ],
     ],
 
     /*
