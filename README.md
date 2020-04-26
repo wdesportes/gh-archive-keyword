@@ -24,6 +24,12 @@ docker-compose -p gha-keyword up --build
 docker exec php-7.4-nginx php artisan key:generate
 ```
 
+### Migrate the database
+
+```bash
+docker exec php-7.4-nginx php artisan migrate
+```
+
 ### Run the tests
 
 ```bash
