@@ -16,6 +16,7 @@
         "guzzlehttp/guzzle": "^6.3",
         "laravel/framework": "^7.0",
         "laravel/tinker": "^2.0",
+        "nesbot/carbon": "^2.32",
         "rcrowe/twigbridge": "^0.11.3"
     },
     "require-dev": {
