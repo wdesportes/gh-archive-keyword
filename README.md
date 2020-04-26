@@ -30,8 +30,26 @@ docker-compose -p gha-keyword exec php-7.4-nginx php artisan key:generate
 docker-compose -p gha-keyword exec php-7.4-nginx php artisan migrate
 ```
 
+### Ingest data
+
+#### Today
+
+```bash
+docker-compose -p gha-keyword exec php-7.4-nginx php artisan ingest --today
+```
+
+#### A date
+
+```bash
+docker-compose -p gha-keyword exec php-7.4-nginx php artisan ingest --date=2020-01-25
+```
+
 ### Run the tests
 
 ```bash
 docker-compose -p gha-keyword exec php-7.4-nginx composer run test
 ```
+
+### Browse the results
+
+http://localhost:8085/search
