@@ -4,7 +4,7 @@ namespace Tests\Feature;
 
 use Tests\TestCase;
 
-class ExampleTest extends TestCase
+final class FrontTest extends TestCase
 {
     /**
      * Test the the welcome page works
