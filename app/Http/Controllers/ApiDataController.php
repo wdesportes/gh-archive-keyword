@@ -50,7 +50,7 @@ class ApiDataController extends AbstractController
 
     private function getSuggestedDate(): string
     {
-        $firstCommit = Commit::first();
+        $firstCommit = Commit::orderBy('created_at', 'DESC')->first();
         if ($firstCommit === null) {
             return Carbon::now()->format('Y-m-d');
         }
