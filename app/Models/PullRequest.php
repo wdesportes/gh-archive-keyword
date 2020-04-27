@@ -22,6 +22,7 @@ final class PullRequest extends Model
      * @var string[]
      */
     protected $fillable = [
+        'created_at',
         'pull_id',
         'repository_id',
         'title',

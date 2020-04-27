@@ -22,6 +22,7 @@ final class IssueComment extends Model
      * @var string[]
      */
     protected $fillable = [
+        'created_at',
         'comment_id',
         'repository_id',
         'body',

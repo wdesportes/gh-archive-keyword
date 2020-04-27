@@ -29,6 +29,7 @@ final class PipeSaveModels
             case 'PushEvent':
                 foreach ($data->payload->commits as $commit) {
                     Commit::create([
+                        'created_at' => $data->created_at,
                         'push_id' => $data->payload->push_id,
                         'repository_id' => $data->repo->id,
                         'sha' => $commit->sha,
@@ -38,6 +39,7 @@ final class PipeSaveModels
                 break;
             case 'IssueCommentEvent':
                 IssueComment::create([
+                    'created_at' => $data->created_at,
                     'comment_id' => $data->payload->comment->id,
                     'repository_id' => $data->repo->id,
                     'body' => $data->payload->comment->body,
@@ -45,6 +47,7 @@ final class PipeSaveModels
                 break;
             case 'PullRequestEvent':
                 PullRequest::create([
+                    'created_at' => $data->created_at,
                     'pull_id' => $data->payload->pull_request->id,
                     'repository_id' => $data->repo->id,
                     'title' => $data->payload->pull_request->title,

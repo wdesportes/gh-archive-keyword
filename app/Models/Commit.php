@@ -23,6 +23,7 @@ final class Commit extends Model
      * @var string[]
      */
     protected $fillable = [
+        'created_at',
         'push_id',
         'repository_id',
         'sha',
