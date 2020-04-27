@@ -53,3 +53,8 @@ docker-compose -p gha-keyword exec php-7.4-nginx composer run test
 ### Browse the results
 
 http://localhost:8085/search
+
+
+### A screenshot
+
+![Capture d'écran du résultat rendu dans l'interface web](./public/challenge-success.jpg)
