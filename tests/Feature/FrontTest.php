@@ -7,7 +7,7 @@ use Tests\TestCase;
 final class FrontTest extends TestCase
 {
     /**
-     * Test the the welcome page works
+     * Test that the welcome page works
      *
      * @return void
      */
@@ -19,7 +19,7 @@ final class FrontTest extends TestCase
     }
 
     /**
-     * Test the the search page works
+     * Test that the search page works
      *
      * @return void
      */
@@ -31,7 +31,7 @@ final class FrontTest extends TestCase
     }
 
     /**
-     * Test the the search page works with query params
+     * Test that the search page works with query params
      *
      * @return void
      */
