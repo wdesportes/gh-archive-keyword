@@ -54,6 +54,11 @@ docker-compose -p gha-keyword exec php-7.4-nginx composer run test
 
 http://localhost:8085/search
 
+### Try the API to get some data
+
+```bash
+curl -H 'Accept: application/json' http://localhost:8085/api/search/stats?searchDate=2020-01-25
+```
 
 ### A screenshot
 
