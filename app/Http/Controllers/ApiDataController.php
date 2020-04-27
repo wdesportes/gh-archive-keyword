@@ -32,9 +32,9 @@ class ApiDataController extends AbstractController
                 'searchDate' => $searchDate->format('Y-m-d'),
                 'searchTerm' => $searchTerm,
                 'commits' => $commits->limit(1000)->get(),
-                'commitsPoints' => [],
-                'pullsPoints' => [],
-                'commentsPoints' => [],
+                'commitsPoints' => $this->getCommitsCountByHourForTermAndDate($searchTermSql, $searchDate),
+                'pullsPoints' => $this->getPullCountByHourForTermAndDate($searchTermSql, $searchDate),
+                'commentsPoints' => $this->getIssueCommentCountByHourForTermAndDate($searchTermSql, $searchDate),
                 'commitCount' => $commitCount,
                 'commentCount' => $issueCount,
                 'pullsCount' => $pullsCount,
@@ -55,5 +55,68 @@ class ApiDataController extends AbstractController
             return Carbon::now()->format('Y-m-d');
         }
         return $firstCommit->{'created_at'}->format('Y-m-d');
+    }
+
+    /**
+     * Get the number of commits mentionning a term
+     *
+     * @param string $searchTermSql The search term in a SQL format using the joker token
+     * @param Carbon $searchDate The search date
+     * @return array<int,int>
+     */
+    private function getCommitsCountByHourForTermAndDate(string $searchTermSql, Carbon $searchDate): array
+    {
+        $commits = Commit::select([])->forDate($searchDate)->forTerm($searchTermSql);
+        $commits->selectRaw('COUNT(*) as number');
+        $commits->selectRaw('HOUR(created_at) as hour');
+        $commits->groupByRaw('HOUR(created_at)');
+        $commitsData = $commits->get();
+        $hourData = [];
+        for ($i = 0; $i < 24; $i++) {
+            $hourData[$i] = $commitsData->where('hour', $i)->first()->{'number'} ?? 0;
+        }
+        return $hourData;
+    }
+
+    /**
+     * Get the number of issues mentionning a term
+     *
+     * @param string $searchTermSql The search term in a SQL format using the joker token
+     * @param Carbon $searchDate The search date
+     * @return array<int,int>
+     */
+    private function getIssueCommentCountByHourForTermAndDate(string $searchTermSql, Carbon $searchDate): array
+    {
+        $comments = IssueComment::select([])->forDate($searchDate)->forTerm($searchTermSql);
+        $comments->selectRaw('COUNT(*) as number');
+        $comments->selectRaw('HOUR(created_at) as hour');
+        $comments->groupByRaw('HOUR(created_at)');
+        $commentsData = $comments->get();
+        $hourData = [];
+        for ($i = 0; $i < 24; $i++) {
+            $hourData[$i] = $commentsData->where('hour', $i)->first()->{'number'} ?? 0;
+        }
+        return $hourData;
+    }
+
+    /**
+     * Get the number of pull requests mentionning a term
+     *
+     * @param string $searchTermSql The search term in a SQL format using the joker token
+     * @param Carbon $searchDate The search date
+     * @return array<int,int>
+     */
+    private function getPullCountByHourForTermAndDate(string $searchTermSql, Carbon $searchDate): array
+    {
+        $pullRequests = PullRequest::select([])->forDate($searchDate)->forTerm($searchTermSql);
+        $pullRequests->selectRaw('COUNT(*) as number');
+        $pullRequests->selectRaw('HOUR(created_at) as hour');
+        $pullRequests->groupByRaw('HOUR(created_at)');
+        $pullRequestsData = $pullRequests->get();
+        $hourData = [];
+        for ($i = 0; $i < 24; $i++) {
+            $hourData[$i] = $pullRequestsData->where('hour', $i)->first()->{'number'} ?? 0;
+        }
+        return $hourData;
     }
 }
