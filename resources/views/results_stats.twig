@@ -29,56 +29,16 @@
 			<div class="card-body">
 				<table class="table">
 					<tbody>
-						<tr>
-							<th class="border-top-0">Commit
-								<a href="#">ABCD1234</a>
-								sur
-								<a href="#">symfony/symfony</a>
-							</th>
-							<td class="border-top-0">I
-								<strong>love</strong>
-								this framework.</td>
-						</tr>
-						<tr>
-							<th>Commit
-								<a href="#">ABCD1234</a>
-								sur
-								<a href="#">symfony/symfony</a>
-							</th>
-							<td>I
-								<strong>love</strong>
-								this framework.</td>
-						</tr>
-						<tr>
-							<th>Commit
-								<a href="#">ABCD1234</a>
-								sur
-								<a href="#">symfony/symfony</a>
-							</th>
-							<td>I
-								<strong>love</strong>
-								this framework.</td>
-						</tr>
-						<tr>
-							<th>Commit
-								<a href="#">ABCD1234</a>
-								sur
-								<a href="#">symfony/symfony</a>
-							</th>
-							<td>I
-								<strong>love</strong>
-								this framework.</td>
-						</tr>
-						<tr>
-							<th>Commit
-								<a href="#">ABCD1234</a>
-								sur
-								<a href="#">symfony/symfony</a>
-							</th>
-							<td>I
-								<strong>love</strong>
-								this framework.</td>
-						</tr>
+                        {% for commit in commits %}
+                            <tr>
+                                <th class="border-top-0">Commit
+                                    <a href="https://github.com/{{ commit.repository.slug }}/commit/{{ commit.sha }}" target="_blank">{{ commit.sha }}</a>
+                                    sur
+                                    <a href="https://github.com/{{ commit.repository.slug }}/" target="_blank">{{ commit.repository.slug }}</a>
+                                </th>
+                                <td class="border-top-0">{{ commit.message|replace({('' ~searchTerm ~ ''): '<strong>' ~ searchTerm ~ '</strong>'})|raw }}</td>
+                            </tr>
+                        {% endfor %}
 					</tbody>
 				</table>
 			</div>

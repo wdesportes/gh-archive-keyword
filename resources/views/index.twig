@@ -32,10 +32,10 @@
 
           <!-- Topbar Search -->
           <form class="form-inline navbar-search w-100">
-            <input class="form-control mr-2" type="date" value="2019-01-14" name="searchDate">
+            <input class="form-control mr-2" type="date" name="searchDate" value="{{searchDate}}">
 
             <div class="input-group">
-              <input type="text" class="form-control bg-light border-0 small" placeholder="Mot-clé" aria-label="Mot-clé" name="searchTerm">
+              <input type="text" class="form-control bg-light border-0 small" placeholder="Mot-clé" aria-label="Mot-clé" name="searchTerm" value="{{searchTerm}}">
               <div class="input-group-append">
                 <button class="btn btn-primary" type="submit">
                   <i class="fas fa-search fa-sm"></i>
@@ -73,7 +73,10 @@
         } %}
 
         {% if searchTerm is not null %}
-            {% include "results_stats" %}
+            {% include "results_stats" with {
+                searchTerm: searchTerm,
+                commits: commits
+            } %}
         {% endif %}
         </div>
 
