@@ -42,4 +42,5 @@ jobs:
                   DB_PASSWORD: password
                   APP_ENV: testing
               run: |
+                  php artisan migrate
                   composer run phpunit
