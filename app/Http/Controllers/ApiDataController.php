@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\SearchRequest;
 use App\Models\Commit;
 use App\Models\IssueComment;
 use App\Models\PullRequest;
 use Illuminate\Support\Facades\View;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
 
@@ -45,6 +47,21 @@ class ApiDataController extends AbstractController
             'commitCount' => Commit::count(),
             'commentCount' => IssueComment::count(),
             'pullsCount' => PullRequest::count(),
+        ]);
+    }
+
+    /**
+     * Get API stats data as a JSON string
+     * @return JsonResponse
+     */
+    public function getCommitStatsBySearchQueryAndDate(SearchRequest $request): JsonResponse
+    {
+        $searchTermSql = '%' . $request->getSearchTerm() . '%';
+        $searchDate = $request->getSearchDate();
+        return response()->json([
+            'commitsPoints' => $this->getCommitsCountByHourForTermAndDate($searchTermSql, $searchDate),
+            'pullsPoints' => $this->getPullCountByHourForTermAndDate($searchTermSql, $searchDate),
+            'commentsPoints' => $this->getIssueCommentCountByHourForTermAndDate($searchTermSql, $searchDate),
         ]);
     }
 
